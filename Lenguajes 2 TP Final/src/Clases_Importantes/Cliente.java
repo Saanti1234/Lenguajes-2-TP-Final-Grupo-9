@@ -5,13 +5,13 @@ import java.util.InputMismatchException;
 public class Cliente {
     private String nombre;
     private String apellido;
-    private int DNI;
+    private String DNI;
     private String direccion;
     private int nroTarjetaCredito; //El sistema solo acepta tarjeta de credito!
     
     // Constructor
 
-    public Cliente(String nombre, String apellido, int DNI, String direccion, int nroTarjetaCredito) {
+    public Cliente(String nombre, String apellido, int DNI, String direccion, String nroTarjetaCredito) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
@@ -45,10 +45,10 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    public int getNroTarjetaCredito() {
+    public String getNroTarjetaCredito() {
         return nroTarjetaCredito;
     }
-    public void setNroTarjetaCredito(int nroTarjetaCredito) {
+    public void setNroTarjetaCredito(String nroTarjetaCredito) {
         this.nroTarjetaCredito = nroTarjetaCredito;
     }
     @Override 
