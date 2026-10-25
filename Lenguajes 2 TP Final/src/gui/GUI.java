@@ -60,4 +60,70 @@ public class GUI {
         // Final
         ventana.setVisible(true);
     }
+    boton.addActionListener(e -> {
+
+    	    String nombre = campoNombre.getText().trim();
+    	    String apellido = campoApellido.getText().trim();
+    	    String dniTexto = campoDNI.getText().trim();
+    	    String direccion = campoDireccion.getText().trim();
+    	    String tarjeta = campoTarjeta.getText().trim();
+
+    	    // Comprobar que los campos estén completos
+    	    if (nombre.isEmpty() || apellido.isEmpty()
+    	            || dniTexto.isEmpty()
+    	            || direccion.isEmpty() || tarjeta.isEmpty()) {
+
+    	        JOptionPane.showMessageDialog(
+    	                ventana,
+    	                "Complete todos los campos."
+    	        );
+    	        return;
+    	    }
+
+    	    try {
+    	        // Convertir el DNI a entero
+    	        int dni = Integer.parseInt(dniTexto);
+
+    	        // Crear el objeto Cliente
+    	        Cliente cliente = new Cliente(
+    	                nombre,
+    	                apellido,
+    	                dni,
+    	                direccion,
+    	                tarjeta
+    	        );
+
+    	        // Sucursales de ejemplo: reemplazar por las reales
+    	        List<Sucursal> sucursales = Arrays.asList(
+    	                new Sucursal(
+    	                        "Sucursal Centro",
+    	                        "Salta",
+    	                        "Salta",
+    	                        "Dirección ficticia 1"
+    	                ),
+    	                new Sucursal(
+    	                        "Sucursal Norte",
+    	                        "Salta",
+    	                        "Salta",
+    	                        "Dirección ficticia 2"
+    	                )
+    	        );
+
+    	        // Abrir la segunda ventana
+    	        VentanaAlquiler nuevaVentana =
+    	                new VentanaAlquiler(cliente, sucursales);
+
+    	        nuevaVentana.setVisible(true);
+
+    	        // Cerrar la primera ventana
+    	        ventana.dispose();
+
+    	    } catch (NumberFormatException ex) {
+
+    	        JOptionPane.showMessageDialog(
+    	                ventana,
+    	                "El DNI debe contener un número válido."
+    	        );
+    	    }
+    	});
 }
